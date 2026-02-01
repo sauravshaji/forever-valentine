@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Forever Valentine 💖</title>
+<style>
+body {
+  background: pink;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  font-family: Arial, sans-serif;
+}
+.card {
+  background: white;
+  padding: 30px;
+  border-radius: 20px;
+  text-align: center;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+}
+button {
+  padding: 10px 20px;
+  font-size: 18px;
+  border-radius: 20px;
+  border: none;
+  margin: 10px;
+  cursor: pointer;
+}
+.yes { background: red; color: white; }
+.no { background: gray; position: absolute; }
+.heart {
+  position: absolute;
+  font-size: 24px;
+  animation: float 2s linear infinite;
+}
+@keyframes float {
+  0% { transform: translateY(0); opacity:1;}
+  100% { transform: translateY(-150px); opacity:0;}
+}
+</style>
+</head>
+<body>
+
+<div class="card">
+  <h2>Meera, will you be my Valentine? ❤️</h2>
+  <button class="yes" onclick="yes()">Yes</button>
+  <button class="no" onclick="move()">No</button>
+</div>
+
+<script>
+let questions = [
+  "Will you always be my Valentine? 💖",
+  "Can I steal your heart forever? 😳",
+  "Will you go on many dates with me? 🌸",
+  "Can I call you mine? 🥹",
+  "Do you love me? ❤️",
+  "Will you be my forever partner? 💞",
+  "Can we make more cute memories together? 🌹",
+  "Will you make me the happiest man alive? 🥰"
+];
+
+let index = 0;
+
+function yes() {
+  if (index < questions.length) {
+    document.querySelector("h2").innerText = questions[index];
+    index++;
+    createHeart();
+  } else {
+    document.querySelector("h2").innerText =
+      "YAYYY 💕 You are my forever Valentine 🥰";
+    document.querySelector(".yes").style.display = "none";
+    document.querySelector(".no").style.display = "none";
+  }
+}
+
+function move() {
+  document.querySelector("h2").innerText =
+    "I KNOW YOU CLICKED THE WRONG OPTION 😌❤️";
+}
+
+function createHeart() {
+  let heart = document.createElement("div");
+  heart.classList.add("heart");
+  heart.style.left = Math.random()*90 + "%";
+  heart.style.color = "red";
+  heart.innerText = "❤️";
+  document.body.appendChild(heart);
+  setTimeout(()=>{ heart.remove() }, 2000);
+}
+</script>
+
+</body>
+  </html>
